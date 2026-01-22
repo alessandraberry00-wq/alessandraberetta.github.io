@@ -115,7 +115,6 @@
       border: 1px solid rgba(31,41,55,0.10);
       box-shadow: var(--shadow);
 
-      /* note: your file was hero.jpeg */
       background:
         linear-gradient(180deg, rgba(10,12,18,0.42), rgba(10,12,18,0.12)),
         url("hero.jpeg") center / cover no-repeat;
@@ -202,7 +201,7 @@
 
     .btn:hover{ text-decoration:none; filter: brightness(1.03); }
 
-    /* Avatar */
+    /* Avatar on the right */
     .avatar-wrap{
       display:flex;
       justify-content: flex-end;
@@ -280,6 +279,7 @@
       border-radius: 999px;
     }
 
+    /* About layout */
     .about{ grid-column: 1 / span 7; }
     .quick{ grid-column: 8 / span 5; }
 
@@ -339,6 +339,7 @@
       object-fit: cover;
       display:block;
       filter: saturate(1.02) contrast(0.98) brightness(1.02);
+      object-position: 50% 50%; /* default */
     }
 
     .badge{
@@ -357,6 +358,12 @@
       font-weight: 750;
       backdrop-filter: blur(8px);
     }
+
+    /* ✅ Focus fixes based on your screenshot */
+    .focus-litfarm{ object-position: 18% 55%; }   /* pulls logo left, slightly up */
+    .focus-open{ object-position: 14% 52%; }      /* keeps left-side presenter */
+    .focus-research{ object-position: 50% 50%; }  /* centered */
+    .focus-book{ object-position: 62% 50%; }      /* nudges towards the right subject */
 
     footer{
       margin-top: 34px;
@@ -465,7 +472,7 @@
         <article class="card project">
           <div class="project-media">
             <span class="badge">Analytics · Dashboard</span>
-            <img src="litfarm.png" alt="LitFarm web design and data analytics project" style="object-position: left center;" />
+            <img src="litfarm.png" class="focus-litfarm" alt="LitFarm web design and data analytics project" />
           </div>
 
           <div class="accent-band"></div>
@@ -493,7 +500,7 @@
         <article class="card project">
           <div class="project-media">
             <span class="badge">Research Proposal</span>
-            <img src="research-authenticity.png" alt="Gen Z authenticity research proposal" style="object-position: center 35%;" />
+            <img src="research-authenticity.png" class="focus-research" alt="Gen Z authenticity research proposal" />
           </div>
 
           <div class="accent-band"></div>
@@ -520,7 +527,7 @@
         <article class="card project">
           <div class="project-media">
             <span class="badge">Open Day · Presentation</span>
-            <img src="open-day.jpg" alt="Open Day presentation photo" style="object-position: center 30%;" />
+            <img src="open-day.jpg" class="focus-open" alt="Open Day presentation photo" />
           </div>
 
           <div class="accent-band"></div>
@@ -546,7 +553,7 @@
         <article class="card project">
           <div class="project-media">
             <span class="badge">Interview · Book</span>
-            <img src="book.jpg" alt="Book/interview project photo" style="object-position: center 40%;" />
+            <img src="book.jpg" class="focus-book" alt="Book/interview project photo" />
           </div>
 
           <div class="accent-band"></div>
