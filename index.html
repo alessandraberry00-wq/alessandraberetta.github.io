@@ -9,7 +9,6 @@
   <style>
     :root{
       --bg: #fbfaf7;
-      --surface: #ffffff;
       --ink: #1f2937;
       --muted: #5b6472;
       --line: rgba(31,41,55,0.12);
@@ -22,7 +21,6 @@
       --shadow: 0 14px 40px rgba(17,24,39,0.10);
       --shadow-soft: 0 10px 26px rgba(17,24,39,0.08);
       --radius: 18px;
-
       --max: 1040px;
     }
 
@@ -40,7 +38,6 @@
     }
 
     a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
 
     .wrap{
       max-width: var(--max);
@@ -85,17 +82,6 @@
       color: var(--muted);
     }
 
-    .navlinks a{
-      padding:6px 10px;
-      border-radius:999px;
-    }
-
-    .navlinks a:hover{
-      background: rgba(255,255,255,0.6);
-      text-decoration:none;
-      color: var(--ink);
-    }
-
     /* HERO */
     .hero{
       margin-top:18px;
@@ -117,15 +103,6 @@
       align-items:center;
     }
 
-    .kicker{
-      font-size:13px;
-      background: rgba(255,255,255,0.15);
-      padding:6px 12px;
-      border-radius:999px;
-      display:inline-block;
-      margin-bottom:10px;
-    }
-
     h1{
       font-size: clamp(28px, 4vw, 44px);
       margin:0 0 8px;
@@ -135,27 +112,6 @@
       max-width:70ch;
       opacity:0.9;
       margin-bottom:14px;
-    }
-
-    .cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:10px 14px;
-      border-radius:12px;
-      font-weight:600;
-      font-size:14px;
-      background: rgba(255,255,255,0.15);
-      border:1px solid rgba(255,255,255,0.25);
-    }
-
-    .btn.primary{
-      background: linear-gradient(135deg, var(--lavender), var(--mint));
-      color:#0b1220;
-      border:none;
     }
 
     .avatar{
@@ -174,16 +130,8 @@
       object-fit:cover;
     }
 
-    /* SECTIONS */
-    section{ margin-top:30px; }
-
-    .section-title{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:12px;
-    }
-
-    h2{ font-size:18px; margin:0; }
+    /* PROJECTS */
+    section{ margin-top:34px; }
 
     .grid{
       display:grid;
@@ -193,7 +141,7 @@
 
     .card{
       grid-column: span 6;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.85);
       border:1px solid var(--line);
       border-radius: var(--radius);
       padding:16px;
@@ -226,38 +174,17 @@
       font-weight:600;
     }
 
+    h3{ margin:6px 0; }
+
     .meta{
       font-size:12px;
       color: var(--muted);
       margin-bottom:6px;
     }
 
-    .bullets{
+    ul{
       padding-left:18px;
       font-size:14px;
-      color: var(--muted);
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:10px;
-    }
-
-    .chip{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,0.6);
-      border:1px solid var(--line);
-    }
-
-    footer{
-      margin-top:40px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      font-size:13px;
       color: var(--muted);
     }
 
@@ -276,22 +203,16 @@
     <div class="brand"><span class="dot"></span>Alessandra Beretta</div>
     <div class="navlinks">
       <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
     </div>
   </div>
 
   <header class="hero">
     <div class="hero-inner">
       <div>
-        <span class="kicker">Digital Marketing & Data Analytics · Market Research</span>
         <h1>Cozy data, sharp insights.</h1>
         <p class="subtitle">
-          I’m Alessandra, interested in market research and consumer insights where data and human perception meet.
+          Market research & consumer insights at the intersection of data and human perception.
         </p>
-        <div class="cta">
-          <a class="btn primary" href="CV.pdf" target="_blank">Download CV</a>
-          <a class="btn" href="mailto:alessandraberry00@gmail.com">Email</a>
-        </div>
       </div>
       <div class="avatar">
         <img src="avatar.jpg" alt="Alessandra Beretta">
@@ -300,40 +221,33 @@
   </header>
 
   <section id="projects">
-    <div class="section-title"><h2>Selected Projects</h2></div>
     <div class="grid">
 
       <article class="card">
         <div class="project-media">
-          <span class="badge">Analytics · Dashboard</span>
+          <span class="badge">Analytics</span>
           <img src="litfarm.png" alt="LitFarm project">
         </div>
         <h3>LitFarm · Web Design & Data Analytics</h3>
         <p class="meta">University project</p>
-        <ul class="bullets">
+        <ul>
           <li>GA4 analysis and KPI definition</li>
           <li>Dashboard creation and interpretation</li>
-          <li>UX choices linked to performance</li>
         </ul>
-        <div class="chips">
-          <span class="chip">GA4</span><span class="chip">Looker Studio</span>
-        </div>
       </article>
 
       <article class="card">
         <div class="project-media">
-          <span class="badge">Research</span>
+          <span class="badge">Research Proposal</span>
+          <img src="research-authenticity.png" alt="Gen Z authenticity research proposal">
         </div>
-        <h3>Research Proposal · Gen Z & Authenticity</h3>
-        <p class="meta">Applied Research Methods for Business</p>
-        <ul class="bullets">
+        <h3>Gen Z & Perceived Authenticity on Social Media</h3>
+        <p class="meta">Applied Research Methods for Business · Prof. Gerardi</p>
+        <ul>
           <li>Focus on perceived authenticity on social media</li>
           <li>Research design and construct definition</li>
           <li>Academic framing and methodology</li>
         </ul>
-        <div class="chips">
-          <span class="chip">Research design</span><span class="chip">Gen Z</span>
-        </div>
       </article>
 
       <article class="card">
@@ -343,7 +257,7 @@
         </div>
         <h3>Open Day · Event & Communication</h3>
         <p class="meta">University initiative</p>
-        <ul class="bullets">
+        <ul>
           <li>Presentation and audience engagement</li>
           <li>Clear communication of academic value</li>
         </ul>
@@ -356,7 +270,7 @@
         </div>
         <h3>Academic Interview · Book Discussion</h3>
         <p class="meta">Interview & synthesis</p>
-        <ul class="bullets">
+        <ul>
           <li>Question design and interview flow</li>
           <li>Content synthesis and storytelling</li>
         </ul>
@@ -364,11 +278,6 @@
 
     </div>
   </section>
-
-  <footer id="contact">
-    <p>Email: <a href="mailto:alessandraberry00@gmail.com">alessandraberry00@gmail.com</a></p>
-    <p>“Live curiously, grow constantly, stay kind.”</p>
-  </footer>
 
 </div>
 </body>
