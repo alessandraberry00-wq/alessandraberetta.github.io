@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,7 +8,9 @@
 
   <style>
     :root{
+      /* Cozy pastel palette */
       --bg: #fbfaf7;
+      --surface: rgba(255,255,255,0.82);
       --ink: #1f2937;
       --muted: #5b6472;
       --line: rgba(31,41,55,0.12);
@@ -25,19 +27,22 @@
     }
 
     *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(1200px 600px at 12% 0%, rgba(185,167,255,0.20), transparent 60%),
-        radial-gradient(900px 520px at 86% 10%, rgba(159,231,215,0.18), transparent 58%),
-        radial-gradient(900px 520px at 50% 92%, rgba(169,216,255,0.20), transparent 55%),
+        radial-gradient(1200px 600px at 12% 0%, rgba(185,167,255,0.18), transparent 60%),
+        radial-gradient(900px 520px at 86% 10%, rgba(159,231,215,0.16), transparent 58%),
+        radial-gradient(900px 520px at 50% 92%, rgba(169,216,255,0.18), transparent 55%),
         var(--bg);
       color: var(--ink);
       line-height: 1.6;
     }
 
     a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
 
     .wrap{
       max-width: var(--max);
@@ -45,240 +50,576 @@
       padding: 18px 18px 70px;
     }
 
-    /* NAV */
+    /* Top nav */
     .nav{
       position: sticky;
       top: 14px;
       z-index: 50;
       display:flex;
-      justify-content: space-between;
       align-items:center;
-      padding: 10px 14px;
-      border-radius: 999px;
+      justify-content: space-between;
+      gap: 14px;
+
       background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(31,41,55,0.10);
       backdrop-filter: blur(10px);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
+      border-radius: 999px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 22px rgba(17,24,39,0.07);
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:700;
+      font-weight: 750;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
     }
 
     .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
       background: linear-gradient(135deg, var(--lavender), var(--mint));
+      box-shadow: 0 0 0 4px rgba(185,167,255,0.16);
     }
 
     .navlinks{
       display:flex;
-      gap:10px;
-      font-size:14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 14px;
       color: var(--muted);
     }
 
-    /* HERO */
+    .navlinks a{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .navlinks a:hover{
+      border-color: rgba(31,41,55,0.12);
+      background: rgba(255,255,255,0.65);
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    /* Hero (photo only here) */
     .hero{
-      margin-top:18px;
-      border-radius: 24px;
-      overflow:hidden;
-      border:1px solid var(--line);
+      margin-top: 18px;
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      border: 1px solid rgba(31,41,55,0.10);
       box-shadow: var(--shadow);
+
       background:
-        linear-gradient(180deg, rgba(10,12,18,0.45), rgba(10,12,18,0.15)),
+        linear-gradient(180deg, rgba(10,12,18,0.42), rgba(10,12,18,0.12)),
         url("hero.jpeg") center / cover no-repeat;
-      color: white;
+      color: rgba(255,255,255,0.96);
+      position: relative;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset: 0;
+      background:
+        radial-gradient(600px 260px at 18% 22%, rgba(185,167,255,0.35), transparent 60%),
+        radial-gradient(520px 240px at 78% 20%, rgba(159,231,215,0.28), transparent 60%);
+      pointer-events:none;
+      mix-blend-mode: screen;
+      opacity: 0.85;
     }
 
     .hero-inner{
-      display:grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap:20px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
       padding: 28px 22px;
+      align-items: center;
+    }
+
+    .kicker{
+      display:inline-flex;
       align-items:center;
+      gap:10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 7px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      backdrop-filter: blur(8px);
     }
 
     h1{
-      font-size: clamp(28px, 4vw, 44px);
-      margin:0 0 8px;
+      margin: 12px 0 8px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.8px;
     }
 
     .subtitle{
-      max-width:70ch;
-      opacity:0.9;
-      margin-bottom:14px;
+      margin: 0 0 14px;
+      max-width: 70ch;
+      color: rgba(255,255,255,0.86);
+      font-size: 16px;
+    }
+
+    .cta{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.96);
+      font-weight: 750;
+      font-size: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(185,167,255,0.98), rgba(159,231,215,0.98));
+      color: #0b1220;
+    }
+
+    .btn:hover{ text-decoration:none; filter: brightness(1.03); }
+
+    /* Avatar */
+    .avatar-wrap{
+      display:flex;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     .avatar{
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      overflow:hidden;
-      border:2px solid rgba(255,255,255,0.4);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.3);
-      justify-self:end;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.35);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.30);
+      background: rgba(255,255,255,0.10);
     }
 
     .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display:block;
     }
 
-    /* PROJECTS */
-    section{ margin-top:34px; }
+    /* Sections */
+    section{ margin-top: 26px; }
+
+    .section-title{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+
+    h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    .hint{
+      font-size: 13px;
+      color: var(--muted);
+    }
 
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:14px;
+      gap: 14px;
     }
 
     .card{
-      grid-column: span 6;
-      background: rgba(255,255,255,0.85);
-      border:1px solid var(--line);
+      border: 1px solid rgba(31,41,55,0.10);
       border-radius: var(--radius);
-      padding:16px;
+      background: var(--surface);
       box-shadow: var(--shadow-soft);
+      padding: 16px;
+      overflow: hidden;
     }
 
+    .card:hover{ background: rgba(255,255,255,0.90); }
+
+    .p{ margin: 0; color: var(--muted); }
+    .p strong{ color: var(--ink); }
+
+    .chips{ margin-top: 10px; display:flex; gap:8px; flex-wrap: wrap; }
+    .chip{
+      font-size: 12px;
+      color: rgba(31,41,55,0.78);
+      border: 1px solid rgba(31,41,55,0.12);
+      background: rgba(255,255,255,0.60);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .about{ grid-column: 1 / span 7; }
+    .quick{ grid-column: 8 / span 5; }
+
+    /* Projects */
+    .project{ grid-column: span 6; }
+    .project h3{
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .meta{
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .bullets li{ margin: 6px 0; }
+
+    .accent-band{
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg,
+        rgba(185,167,255,0.65),
+        rgba(159,231,215,0.55),
+        rgba(255,212,184,0.55),
+        rgba(169,216,255,0.55)
+      );
+      margin-bottom: 10px;
+      border: 1px solid rgba(31,41,55,0.08);
+    }
+
+    /* Coherent project image slot */
     .project-media{
-      height:170px;
-      border-radius:14px;
-      overflow:hidden;
-      margin-bottom:12px;
-      position:relative;
+      height: 170px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.10);
+      overflow: hidden;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.55);
+      position: relative;
     }
 
     .project-media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
       filter: saturate(1.02) contrast(0.98) brightness(1.02);
     }
 
     .badge{
       position:absolute;
-      top:10px;
-      left:10px;
-      background: rgba(255,255,255,0.75);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:600;
+      left: 12px;
+      top: 12px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(31,41,55,0.10);
+      color: rgba(31,41,55,0.80);
+      font-size: 12px;
+      font-weight: 750;
+      backdrop-filter: blur(8px);
     }
 
-    h3{ margin:6px 0; }
-
-    .meta{
-      font-size:12px;
+    footer{
+      margin-top: 34px;
+      padding: 18px 10px 0;
       color: var(--muted);
-      margin-bottom:6px;
-    }
-
-    ul{
-      padding-left:18px;
-      font-size:14px;
-      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(31,41,55,0.10);
     }
 
     @media (max-width: 860px){
       .hero-inner{ grid-template-columns: 1fr; }
-      .avatar{ justify-self:start; }
-      .card{ grid-column: span 12; }
+      .avatar-wrap{ justify-content: flex-start; }
+      .avatar{ width: 120px; height: 120px; }
+      .about{ grid-column: 1 / span 12; }
+      .quick{ grid-column: 1 / span 12; }
+      .project{ grid-column: span 12; }
+      .nav{ border-radius: 18px; }
+      .project-media{ height: 190px; }
     }
   </style>
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <div class="nav">
-    <div class="brand"><span class="dot"></span>Alessandra Beretta</div>
-    <div class="navlinks">
-      <a href="#projects">Projects</a>
+    <div class="nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Alessandra Beretta</span>
+      </div>
+      <div class="navlinks">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
+
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <span class="kicker">Digital Marketing & Data Analytics · Market Research · Consumer Insights</span>
+          <h1>Cozy data, sharp insights.</h1>
+          <p class="subtitle">
+            I’m Alessandra. I’m interested in roles where data analysis and qualitative insight support marketing decisions:
+            market research, consumer insights, and strategy.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="CV.pdf" target="_blank" rel="noopener">Download CV</a>
+            <a class="btn" href="https://linkedin.com/in/alessandraberetta" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="mailto:alessandraberry00@gmail.com">Email</a>
+          </div>
+        </div>
+
+        <div class="avatar-wrap">
+          <div class="avatar" aria-label="Profile photo">
+            <img src="avatar.jpg" alt="Alessandra Beretta"/>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-title">
+        <h2>About</h2>
+        <div class="hint">Warm, concise, and research-oriented</div>
+      </div>
+
+      <div class="grid">
+        <div class="card about">
+          <div class="accent-band"></div>
+          <p class="p">
+            I combine analytical thinking with creativity, with a preference for strategy, ideas, and research over purely operational execution.
+            During my studies I’ve worked on projects involving analytics, research design, interviews, and academic writing.
+          </p>
+          <div class="chips">
+            <span class="chip">Consumer behavior</span>
+            <span class="chip">Market research</span>
+            <span class="chip">Data storytelling</span>
+            <span class="chip">Mixed methods</span>
+          </div>
+        </div>
+
+        <div class="card quick">
+          <div class="accent-band"></div>
+          <p class="p"><strong>Current focus:</strong> Market research & data analysis roles</p>
+          <p class="p"><strong>Tools:</strong> GA4 · Looker Studio · Tableau · Python (basic)</p>
+          <p class="p"><strong>Working style:</strong> curious, people-oriented, structured</p>
+          <div class="chips">
+            <span class="chip">GA4 certified</span>
+            <span class="chip">Public speaking</span>
+            <span class="chip">Interviews</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Selected projects</h2>
+        <div class="hint">Goal → method → insight</div>
+      </div>
+
+      <div class="grid">
+        <!-- LitFarm -->
+        <article class="card project">
+          <div class="project-media">
+            <span class="badge">Analytics · Dashboard</span>
+            <img src="litfarm.png" alt="LitFarm web design and data analytics project" style="object-position: center 35%;" />
+          </div>
+
+          <div class="accent-band"></div>
+          <h3>LitFarm · Web Design & Data Analytics</h3>
+          <div class="meta">University project · Analytics + performance interpretation</div>
+
+          <p class="p"><strong>Goal:</strong> connect website design choices to measurable user behavior.</p>
+
+          <ul class="bullets">
+            <li>Defined KPIs and funnel logic.</li>
+            <li>Analyzed GA4 metrics and behaviors.</li>
+            <li>Built and interpreted dashboards (Looker Studio).</li>
+            <li>Translated metrics into recommendations.</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">GA4</span>
+            <span class="chip">Looker Studio</span>
+            <span class="chip">Funnel</span>
+            <span class="chip">KPI design</span>
+          </div>
+        </article>
+
+        <!-- Research proposal (PNG) -->
+        <article class="card project">
+          <div class="project-media">
+            <span class="badge">Research Proposal</span>
+            <img src="research-authenticity.png" alt="Gen Z authenticity research proposal" style="object-position: center 35%;" />
+          </div>
+
+          <div class="accent-band"></div>
+          <h3>Research Proposal · Gen Z & Perceived Authenticity on Social Media</h3>
+          <div class="meta">Course project · Applied Research Methods for Business (Prof. Gerardi)</div>
+
+          <p class="p"><strong>Research focus:</strong> how does Gen Z perceive authenticity on social media, and what shapes that perception?</p>
+
+          <ul class="bullets">
+            <li>Defined the research problem, constructs, and expected relationships.</li>
+            <li>Designed a research approach (methods, sampling logic, measures).</li>
+            <li>Structured a clear proposal and rationale grounded in academic sources.</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">Research design</span>
+            <span class="chip">Consumer insights</span>
+            <span class="chip">Qual/Quant logic</span>
+            <span class="chip">Academic writing</span>
+          </div>
+        </article>
+
+        <!-- Open Day -->
+        <article class="card project">
+          <div class="project-media">
+            <span class="badge">Open Day · Presentation</span>
+            <img src="open-day.jpg" alt="Open Day presentation photo" style="object-position: center 30%;" />
+          </div>
+
+          <div class="accent-band"></div>
+          <h3>Open Day · Event & Communication</h3>
+          <div class="meta">University initiative · Planning + audience engagement</div>
+
+          <p class="p"><strong>Goal:</strong> create a welcoming experience and communicate value clearly.</p>
+
+          <ul class="bullets">
+            <li>Supported planning and coordination.</li>
+            <li>Managed communication with a people-first approach.</li>
+            <li>Translated information into accessible messaging.</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">Event planning</span>
+            <span class="chip">Communication</span>
+            <span class="chip">Public speaking</span>
+          </div>
+        </article>
+
+        <!-- Book interview -->
+        <article class="card project">
+          <div class="project-media">
+            <span class="badge">Interview · Book</span>
+            <img src="book.jpg" alt="Book/interview project photo" style="object-position: center 40%;" />
+          </div>
+
+          <div class="accent-band"></div>
+          <h3>Academic Interview · Book Discussion</h3>
+          <div class="meta">Interview project · Content + synthesis</div>
+
+          <p class="p"><strong>Goal:</strong> turn complex content into a clear narrative through questions and synthesis.</p>
+
+          <ul class="bullets">
+            <li>Prepared an interview structure and key questions.</li>
+            <li>Conducted the interview and summarized key takeaways.</li>
+            <li>Practiced public speaking and clarity of explanation.</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">Interviewing</span>
+            <span class="chip">Synthesis</span>
+            <span class="chip">Storytelling</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <div class="hint">Grouped for market research / analytics roles</div>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 6;">
+          <div class="accent-band"></div>
+          <p class="p"><strong>Research & analysis</strong></p>
+          <div class="chips">
+            <span class="chip">Market research</span>
+            <span class="chip">Survey & interview basics</span>
+            <span class="chip">Insight synthesis</span>
+            <span class="chip">Data interpretation</span>
+          </div>
+        </div>
+
+        <div class="card" style="grid-column: span 6;">
+          <div class="accent-band"></div>
+          <p class="p"><strong>Tools</strong></p>
+          <div class="chips">
+            <span class="chip">GA4</span>
+            <span class="chip">Looker Studio</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Python (basic)</span>
+            <span class="chip">Excel</span>
+            <span class="chip">Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div class="hint">Fast ways to reach you</div>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 12;">
+          <div class="accent-band"></div>
+          <p class="p">
+            <strong>Email:</strong> <a href="mailto:alessandraberry00@gmail.com">alessandraberry00@gmail.com</a><br/>
+            <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/alessandraberetta" target="_blank" rel="noopener">linkedin.com/in/alessandraberetta</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="p">“Live curiously, grow constantly, stay kind.”</p>
+      <p class="p">Built with HTML/CSS and hosted on GitHub Pages.</p>
+    </footer>
+
   </div>
-
-  <header class="hero">
-    <div class="hero-inner">
-      <div>
-        <h1>Cozy data, sharp insights.</h1>
-        <p class="subtitle">
-          Market research & consumer insights at the intersection of data and human perception.
-        </p>
-      </div>
-      <div class="avatar">
-        <img src="avatar.jpg" alt="Alessandra Beretta">
-      </div>
-    </div>
-  </header>
-
-  <section id="projects">
-    <div class="grid">
-
-      <article class="card">
-        <div class="project-media">
-          <span class="badge">Analytics</span>
-          <img src="litfarm.png" alt="LitFarm project">
-        </div>
-        <h3>LitFarm · Web Design & Data Analytics</h3>
-        <p class="meta">University project</p>
-        <ul>
-          <li>GA4 analysis and KPI definition</li>
-          <li>Dashboard creation and interpretation</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="project-media">
-          <span class="badge">Research Proposal</span>
-          <img src="research-authenticity.png" alt="Gen Z authenticity research proposal">
-        </div>
-        <h3>Gen Z & Perceived Authenticity on Social Media</h3>
-        <p class="meta">Applied Research Methods for Business · Prof. Gerardi</p>
-        <ul>
-          <li>Focus on perceived authenticity on social media</li>
-          <li>Research design and construct definition</li>
-          <li>Academic framing and methodology</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="project-media">
-          <span class="badge">Open Day</span>
-          <img src="open-day.jpg" alt="Open Day presentation">
-        </div>
-        <h3>Open Day · Event & Communication</h3>
-        <p class="meta">University initiative</p>
-        <ul>
-          <li>Presentation and audience engagement</li>
-          <li>Clear communication of academic value</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="project-media">
-          <span class="badge">Interview</span>
-          <img src="book.jpg" alt="Book interview">
-        </div>
-        <h3>Academic Interview · Book Discussion</h3>
-        <p class="meta">Interview & synthesis</p>
-        <ul>
-          <li>Question design and interview flow</li>
-          <li>Content synthesis and storytelling</li>
-        </ul>
-      </article>
-
-    </div>
-  </section>
-
-</div>
 </body>
 </html>
