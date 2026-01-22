@@ -5,28 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Alessandra Beretta | Portfolio</title>
   <meta name="description" content="Portfolio of Alessandra Beretta: digital marketing, market research, and data analytics projects." />
+
   <style>
     :root{
-      --bg: #0b0c10;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --line: rgba(255,255,255,0.12);
-      --accent: #7c5cff;
-      --accent2: #2ee59d;
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      /* Cozy pastel palette */
+      --bg: #fbfaf7;          /* warm paper */
+      --surface: #ffffff;     /* cards */
+      --ink: #1f2937;         /* text */
+      --muted: #5b6472;       /* secondary text */
+      --line: rgba(31,41,55,0.12);
+
+      --lavender: #b9a7ff;
+      --mint: #9fe7d7;
+      --sky: #a9d8ff;
+      --peach: #ffd4b8;
+
+      --shadow: 0 14px 40px rgba(17,24,39,0.10);
+      --shadow-soft: 0 10px 26px rgba(17,24,39,0.08);
       --radius: 18px;
+
+      --max: 1040px;
     }
 
     *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(124,92,255,0.25), transparent 60%),
-                  radial-gradient(900px 500px at 80% 20%, rgba(46,229,157,0.14), transparent 55%),
-                  var(--bg);
-      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 12% 0%, rgba(185,167,255,0.20), transparent 60%),
+        radial-gradient(900px 520px at 86% 10%, rgba(159,231,215,0.18), transparent 58%),
+        radial-gradient(900px 520px at 50% 92%, rgba(169,216,255,0.20), transparent 55%),
+        var(--bg);
+      color: var(--ink);
       line-height: 1.6;
     }
 
@@ -34,106 +46,141 @@
     a:hover{ text-decoration: underline; text-underline-offset: 4px; }
 
     .wrap{
-      max-width: 1040px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 18px 70px;
+      padding: 18px 18px 70px;
     }
 
     /* Top nav */
     .nav{
       position: sticky;
       top: 14px;
-      z-index: 99;
-      backdrop-filter: blur(10px);
-      background: rgba(10,11,15,0.55);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
+      z-index: 50;
+      display:flex;
+      align-items:center;
       justify-content: space-between;
       gap: 14px;
+
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(31,41,55,0.10);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 22px rgba(17,24,39,0.07);
     }
+
     .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight: 650;
-      letter-spacing: 0.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
       white-space: nowrap;
     }
+
     .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(124,92,255,0.12);
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--lavender), var(--mint));
+      box-shadow: 0 0 0 4px rgba(185,167,255,0.18);
     }
+
     .navlinks{
-      display:flex; gap:14px; flex-wrap: wrap; justify-content: flex-end;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
       font-size: 14px;
       color: var(--muted);
     }
+
     .navlinks a{
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid transparent;
     }
+
     .navlinks a:hover{
-      border-color: var(--line);
-      background: rgba(255,255,255,0.05);
+      border-color: rgba(31,41,55,0.12);
+      background: rgba(255,255,255,0.65);
       text-decoration: none;
-      color: var(--text);
+      color: var(--ink);
     }
 
-    /* Hero */
+    /* Hero with photo only here */
     .hero{
-      margin-top: 22px;
-      padding: 30px 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      box-shadow: var(--shadow);
+      margin-top: 18px;
+      border-radius: calc(var(--radius) + 6px);
       overflow: hidden;
+      border: 1px solid rgba(31,41,55,0.10);
+      box-shadow: var(--shadow);
+
+      /* background image only for the top */
+      background:
+        linear-gradient(180deg, rgba(10,12,18,0.56), rgba(10,12,18,0.20)),
+        url("hero.jpg") center / cover no-repeat;
+      color: rgba(255,255,255,0.96);
       position: relative;
     }
-    .hero:before{
+
+    /* soft glow accents on hero */
+    .hero::before{
       content:"";
       position:absolute;
-      inset:-2px;
-      background: radial-gradient(600px 220px at 15% 20%, rgba(124,92,255,0.18), transparent 55%),
-                  radial-gradient(520px 220px at 70% 20%, rgba(46,229,157,0.12), transparent 55%);
+      inset: 0;
+      background:
+        radial-gradient(600px 260px at 18% 22%, rgba(185,167,255,0.35), transparent 60%),
+        radial-gradient(520px 240px at 78% 20%, rgba(159,231,215,0.28), transparent 60%);
       pointer-events:none;
+      mix-blend-mode: screen;
+      opacity: 0.9;
     }
-    .hero > *{ position: relative; }
+
+    .hero-inner{
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+      padding: 28px 22px;
+      align-items: center;
+    }
 
     .kicker{
       display:inline-flex;
-      gap:10px;
       align-items:center;
+      gap:10px;
       font-size: 13px;
-      color: var(--muted);
-      padding: 6px 12px;
-      border: 1px solid var(--line);
+      color: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.03);
+      width: fit-content;
+      backdrop-filter: blur(8px);
     }
 
     h1{
-      margin: 14px 0 6px;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.6px;
+      margin: 12px 0 8px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.8px;
     }
+
     .subtitle{
-      margin: 0 0 16px;
-      color: var(--muted);
+      margin: 0 0 14px;
+      max-width: 70ch;
+      color: rgba(255,255,255,0.86);
       font-size: 16px;
-      max-width: 72ch;
     }
 
     .cta{
       display:flex;
-      gap:10px;
       flex-wrap: wrap;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 12px;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -141,33 +188,65 @@
       gap:10px;
       padding: 10px 14px;
       border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.96);
+      font-weight: 700;
       font-size: 14px;
+      backdrop-filter: blur(8px);
     }
+
     .btn.primary{
       border-color: transparent;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #0b0c10;
+      background: linear-gradient(135deg, rgba(185,167,255,0.98), rgba(159,231,215,0.98));
+      color: #0b1220;
     }
+
     .btn:hover{ text-decoration:none; filter: brightness(1.03); }
 
+    /* Avatar on the right */
+    .avatar-wrap{
+      display:flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .avatar{
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.35);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.30);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display:block;
+    }
+
     /* Sections */
-    section{ margin-top: 28px; }
+    section{ margin-top: 26px; }
+
     .section-title{
       display:flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 14px;
       margin-bottom: 12px;
+      padding: 0 4px;
     }
+
     h2{
       margin:0;
       font-size: 18px;
       letter-spacing: -0.2px;
     }
+
     .hint{
       font-size: 13px;
       color: var(--muted);
@@ -178,32 +257,35 @@
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
     }
+
     .card{
-      border: 1px solid var(--line);
+      border: 1px solid rgba(31,41,55,0.10);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.78);
+      box-shadow: var(--shadow-soft);
       padding: 16px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.22);
-    }
-    .card:hover{
-      background: rgba(255,255,255,0.055);
     }
 
-    .about{ grid-column: 1 / span 7; }
-    .quick{ grid-column: 8 / span 5; }
+    .card:hover{
+      background: rgba(255,255,255,0.88);
+    }
 
     .p{ margin: 0; color: var(--muted); }
-    .p strong{ color: var(--text); }
+    .p strong{ color: var(--ink); }
 
     .chips{ margin-top: 10px; display:flex; gap:8px; flex-wrap: wrap; }
     .chip{
       font-size: 12px;
-      color: rgba(255,255,255,0.78);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      color: rgba(31,41,55,0.78);
+      border: 1px solid rgba(31,41,55,0.12);
+      background: rgba(255,255,255,0.60);
       padding: 6px 10px;
       border-radius: 999px;
     }
+
+    /* About layout */
+    .about{ grid-column: 1 / span 7; }
+    .quick{ grid-column: 8 / span 5; }
 
     /* Projects */
     .project{ grid-column: span 6; }
@@ -225,17 +307,36 @@
     }
     .bullets li{ margin: 6px 0; }
 
+    /* Soft “litfarm-ish” accent band */
+    .accent-band{
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(185,167,255,0.65), rgba(159,231,215,0.55), rgba(255,212,184,0.55), rgba(169,216,255,0.55));
+      margin-bottom: 10px;
+      border: 1px solid rgba(31,41,55,0.08);
+    }
+
     /* Footer */
     footer{
       margin-top: 34px;
       padding: 18px 10px 0;
       color: var(--muted);
       font-size: 13px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(31,41,55,0.10);
     }
 
     /* Responsive */
     @media (max-width: 860px){
+      .hero-inner{
+        grid-template-columns: 1fr;
+      }
+      .avatar-wrap{
+        justify-content: flex-start;
+      }
+      .avatar{
+        width: 120px;
+        height: 120px;
+      }
       .about{ grid-column: 1 / span 12; }
       .quick{ grid-column: 1 / span 12; }
       .project{ grid-column: span 12; }
@@ -260,29 +361,40 @@
     </div>
 
     <header class="hero" id="top">
-      <span class="kicker">MSc Student · Digital Marketing & Data Analytics · Aspiring Researcher</span>
-      <h1>Market research, data, and human behavior.</h1>
-      <p class="subtitle">
-        I’m Alessandra. I’m interested in roles where data analysis and qualitative insight support
-        marketing decisions: market research, consumer insights, and strategy.
-      </p>
+      <div class="hero-inner">
+        <div>
+          <span class="kicker">Digital Marketing & Data Analytics · Market Research · Aspiring Researcher</span>
+          <h1>Cozy data, sharp insights.</h1>
+          <p class="subtitle">
+            I’m Alessandra. I’m interested in roles where data analysis and qualitative insight support marketing decisions:
+            market research, consumer insights, and strategy.
+          </p>
 
-      <div class="cta">
-        <!-- STEP 2: Replace CV.pdf with your real file name after you upload it -->
-        <a class="btn primary" href="CV.pdf" target="_blank" rel="noopener">Download CV</a>
-        <a class="btn" href="https://linkedin.com/in/alessandraberetta" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:alessandraberry00@gmail.com">Email</a>
+          <div class="cta">
+            <!-- Upload your CV in the repo and name it CV.pdf OR change this to your exact filename -->
+            <a class="btn primary" href="CV.pdf" target="_blank" rel="noopener">Download CV</a>
+            <a class="btn" href="https://linkedin.com/in/alessandraberetta" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="mailto:alessandraberry00@gmail.com">Email</a>
+          </div>
+        </div>
+
+        <div class="avatar-wrap">
+          <div class="avatar" aria-label="Profile photo">
+            <img src="avatar.jpg" alt="Alessandra Beretta"/>
+          </div>
+        </div>
       </div>
     </header>
 
     <section>
       <div class="section-title">
         <h2>About</h2>
-        <div class="hint">Short and research-oriented (no CV repetition)</div>
+        <div class="hint">Warm, concise, and research-oriented</div>
       </div>
 
       <div class="grid">
         <div class="card about">
+          <div class="accent-band"></div>
           <p class="p">
             I combine analytical thinking with creativity, with a preference for strategy, ideas, and research over purely operational execution.
             During my studies I’ve worked on projects involving analytics, research design, interviews, and academic writing.
@@ -296,6 +408,7 @@
         </div>
 
         <div class="card quick">
+          <div class="accent-band"></div>
           <p class="p"><strong>Current focus:</strong> Market research & data analysis roles</p>
           <p class="p"><strong>Tools:</strong> GA4 · Looker Studio · Tableau · Python (basic)</p>
           <p class="p"><strong>Working style:</strong> curious, people-oriented, structured</p>
@@ -311,12 +424,12 @@
     <section id="projects">
       <div class="section-title">
         <h2>Selected projects</h2>
-        <div class="hint">Each project shows: goal → method → insight</div>
+        <div class="hint">Goal → method → insight</div>
       </div>
 
       <div class="grid">
-        <!-- PROJECT 1 -->
         <article class="card project">
+          <div class="accent-band"></div>
           <h3>LitFarm · Web Design & Data Analytics</h3>
           <div class="meta">University project · Analytics + performance interpretation</div>
 
@@ -337,8 +450,8 @@
           </div>
         </article>
 
-        <!-- PROJECT 2 -->
         <article class="card project">
+          <div class="accent-band"></div>
           <h3>Research Proposal · Human vs AI Influencers</h3>
           <div class="meta">Academic research · Consumer perception & credibility</div>
 
@@ -358,12 +471,12 @@
           </div>
         </article>
 
-        <!-- PROJECT 3 -->
         <article class="card project">
+          <div class="accent-band"></div>
           <h3>Open Day · Event & Communication</h3>
           <div class="meta">University initiative · Planning + audience engagement</div>
 
-          <p class="p"><strong>Goal:</strong> create a clear, welcoming experience and communicate value to prospective students.</p>
+          <p class="p"><strong>Goal:</strong> create a welcoming experience and communicate value clearly.</p>
 
           <ul class="bullets">
             <li>Supported planning and coordination.</li>
@@ -378,8 +491,8 @@
           </div>
         </article>
 
-        <!-- PROJECT 4 -->
         <article class="card project">
+          <div class="accent-band"></div>
           <h3>Academic Interview · Book discussion</h3>
           <div class="meta">Interview project · Content + synthesis</div>
 
@@ -403,11 +516,12 @@
     <section id="skills">
       <div class="section-title">
         <h2>Skills</h2>
-        <div class="hint">Grouped to match market research / analytics roles</div>
+        <div class="hint">Grouped for market research / analytics roles</div>
       </div>
 
       <div class="grid">
         <div class="card" style="grid-column: span 6;">
+          <div class="accent-band"></div>
           <p class="p"><strong>Research & analysis</strong></p>
           <div class="chips">
             <span class="chip">Market research</span>
@@ -418,6 +532,7 @@
         </div>
 
         <div class="card" style="grid-column: span 6;">
+          <div class="accent-band"></div>
           <p class="p"><strong>Tools</strong></p>
           <div class="chips">
             <span class="chip">GA4</span>
@@ -425,6 +540,7 @@
             <span class="chip">Tableau</span>
             <span class="chip">Python (basic)</span>
             <span class="chip">Excel</span>
+            <span class="chip">Figma</span>
           </div>
         </div>
       </div>
@@ -438,6 +554,7 @@
 
       <div class="grid">
         <div class="card" style="grid-column: span 12;">
+          <div class="accent-band"></div>
           <p class="p">
             <strong>Email:</strong> <a href="mailto:alessandraberry00@gmail.com">alessandraberry00@gmail.com</a><br/>
             <strong>Phone:</strong> <a href="tel:3791517172">+39 379 151 7172</a><br/>
