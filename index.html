@@ -9,7 +9,7 @@
   <style>
     :root{
       /* Cozy pastel palette */
-      --bg: #fbfaf7;
+      --bg: #fbfaf7;          /* warm paper */
       --surface: rgba(255,255,255,0.82);
       --ink: #1f2937;
       --muted: #5b6472;
@@ -33,9 +33,9 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(1200px 600px at 12% 0%, rgba(185,167,255,0.18), transparent 60%),
-        radial-gradient(900px 520px at 86% 10%, rgba(159,231,215,0.16), transparent 58%),
-        radial-gradient(900px 520px at 50% 92%, rgba(169,216,255,0.18), transparent 55%),
+        radial-gradient(1200px 600px at 12% 0%, rgba(185,167,255,0.20), transparent 60%),
+        radial-gradient(900px 520px at 86% 10%, rgba(159,231,215,0.18), transparent 58%),
+        radial-gradient(900px 520px at 50% 92%, rgba(169,216,255,0.20), transparent 55%),
         var(--bg);
       color: var(--ink);
       line-height: 1.6;
@@ -60,7 +60,7 @@
       justify-content: space-between;
       gap: 14px;
 
-      background: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.72);
       border: 1px solid rgba(31,41,55,0.10);
       backdrop-filter: blur(10px);
       border-radius: 999px;
@@ -107,7 +107,7 @@
       color: var(--ink);
     }
 
-    /* Hero (photo only here) */
+    /* Hero with photo only here */
     .hero{
       margin-top: 18px;
       border-radius: calc(var(--radius) + 6px);
@@ -115,6 +115,7 @@
       border: 1px solid rgba(31,41,55,0.10);
       box-shadow: var(--shadow);
 
+      /* note: your file was hero.jpeg */
       background:
         linear-gradient(180deg, rgba(10,12,18,0.42), rgba(10,12,18,0.12)),
         url("hero.jpeg") center / cover no-repeat;
@@ -324,7 +325,11 @@
       border: 1px solid rgba(31,41,55,0.10);
       overflow: hidden;
       margin-bottom: 12px;
-      background: rgba(255,255,255,0.55);
+      background:
+        radial-gradient(600px 220px at 20% 20%, rgba(185,167,255,0.30), transparent 60%),
+        radial-gradient(520px 220px at 80% 10%, rgba(159,231,215,0.22), transparent 60%),
+        radial-gradient(520px 220px at 60% 90%, rgba(255,212,184,0.18), transparent 60%),
+        rgba(255,255,255,0.55);
       position: relative;
     }
 
@@ -484,7 +489,7 @@
           </div>
         </article>
 
-        <!-- Research proposal (PNG) -->
+        <!-- Research proposal -->
         <article class="card project">
           <div class="project-media">
             <span class="badge">Research Proposal</span>
@@ -493,20 +498,20 @@
 
           <div class="accent-band"></div>
           <h3>Research Proposal · Gen Z & Perceived Authenticity on Social Media</h3>
-          <div class="meta">Course project · Applied Research Methods for Business (Prof. Gerardi)</div>
+          <div class="meta">Applied Research Methods for Business (Prof. Gerardi)</div>
 
           <p class="p"><strong>Research focus:</strong> how does Gen Z perceive authenticity on social media, and what shapes that perception?</p>
 
           <ul class="bullets">
             <li>Defined the research problem, constructs, and expected relationships.</li>
             <li>Designed a research approach (methods, sampling logic, measures).</li>
-            <li>Structured a clear proposal and rationale grounded in academic sources.</li>
+            <li>Structured a clear proposal grounded in academic sources.</li>
           </ul>
 
           <div class="chips">
             <span class="chip">Research design</span>
-            <span class="chip">Consumer insights</span>
-            <span class="chip">Qual/Quant logic</span>
+            <span class="chip">Gen Z</span>
+            <span class="chip">Authenticity</span>
             <span class="chip">Academic writing</span>
           </div>
         </article>
@@ -616,7 +621,6 @@
     </section>
 
     <footer>
-      <p class="p">“Live curiously, grow constantly, stay kind.”</p>
       <p class="p">Built with HTML/CSS and hosted on GitHub Pages.</p>
     </footer>
 
