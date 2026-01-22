@@ -116,15 +116,14 @@
       border: 1px solid rgba(31,41,55,0.10);
       box-shadow: var(--shadow);
 
-      /* background image only for the top */
+      /* NOTE: your file is hero.jpeg (as in your repo) */
       background:
-        linear-gradient(180deg, rgba(10,12,18,0.56), rgba(10,12,18,0.20)),
+        linear-gradient(180deg, rgba(10,12,18,0.42), rgba(10,12,18,0.12)),
         url("hero.jpeg") center / cover no-repeat;
       color: rgba(255,255,255,0.96);
       position: relative;
     }
 
-    /* soft glow accents on hero */
     .hero::before{
       content:"";
       position:absolute;
@@ -264,6 +263,7 @@
       background: rgba(255,255,255,0.78);
       box-shadow: var(--shadow-soft);
       padding: 16px;
+      overflow: hidden;
     }
 
     .card:hover{
@@ -307,13 +307,53 @@
     }
     .bullets li{ margin: 6px 0; }
 
-    /* Soft “litfarm-ish” accent band */
+    /* Soft accent band (litfarm-ish) */
     .accent-band{
       height: 10px;
       border-radius: 999px;
       background: linear-gradient(90deg, rgba(185,167,255,0.65), rgba(159,231,215,0.55), rgba(255,212,184,0.55), rgba(169,216,255,0.55));
       margin-bottom: 10px;
       border: 1px solid rgba(31,41,55,0.08);
+    }
+
+    /* Project media (coherent image placement) */
+    .project-media{
+      height: 170px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.10);
+      overflow: hidden;
+      margin-bottom: 12px;
+      background:
+        radial-gradient(600px 220px at 20% 20%, rgba(185,167,255,0.35), transparent 60%),
+        radial-gradient(520px 220px at 80% 10%, rgba(159,231,215,0.25), transparent 60%),
+        radial-gradient(520px 220px at 60% 90%, rgba(255,212,184,0.22), transparent 60%),
+        rgba(255,255,255,0.55);
+      position: relative;
+    }
+
+    .project-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    .badge{
+      position:absolute;
+      left: 12px;
+      top: 12px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(31,41,55,0.10);
+      color: rgba(31,41,55,0.80);
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
     }
 
     /* Footer */
@@ -341,6 +381,7 @@
       .quick{ grid-column: 1 / span 12; }
       .project{ grid-column: span 12; }
       .nav{ border-radius: 18px; }
+      .project-media{ height: 190px; }
     }
   </style>
 </head>
@@ -371,7 +412,6 @@
           </p>
 
           <div class="cta">
-            <!-- Upload your CV in the repo and name it CV.pdf OR change this to your exact filename -->
             <a class="btn primary" href="CV.pdf" target="_blank" rel="noopener">Download CV</a>
             <a class="btn" href="https://linkedin.com/in/alessandraberetta" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="mailto:alessandraberry00@gmail.com">Email</a>
@@ -428,7 +468,14 @@
       </div>
 
       <div class="grid">
+
+        <!-- PROJECT 1 -->
         <article class="card project">
+          <div class="project-media">
+            <span class="badge">Analytics · Dashboard</span>
+            <!-- No photo? Leave it like this for a coherent placeholder -->
+          </div>
+
           <div class="accent-band"></div>
           <h3>LitFarm · Web Design & Data Analytics</h3>
           <div class="meta">University project · Analytics + performance interpretation</div>
@@ -450,28 +497,40 @@
           </div>
         </article>
 
+        <!-- PROJECT 2 (CORRECTED) -->
         <article class="card project">
-          <div class="accent-band"></div>
-          <h3>Research Proposal · Human vs AI Influencers</h3>
-          <div class="meta">Academic research · Consumer perception & credibility</div>
+          <div class="project-media">
+            <span class="badge">Applied Research Methods</span>
+            <!-- No photo? Leave placeholder (keeps grid consistent) -->
+          </div>
 
-          <p class="p"><strong>Research question:</strong> how does perceived credibility change between human and AI-generated influencers?</p>
+          <div class="accent-band"></div>
+          <h3>Research Proposal · Gen Z & Perceived Authenticity on Social Media</h3>
+          <div class="meta">Course project · Applied Research Methods for Business (Prof. Gerardi)</div>
+
+          <p class="p"><strong>Research focus:</strong> how does Gen Z perceive authenticity on social media, and what shapes that perception?</p>
 
           <ul class="bullets">
-            <li>Built a literature-backed framework (Source Credibility Theory).</li>
-            <li>Designed a mixed-method approach (quant + qual).</li>
-            <li>Defined constructs, measures, and interview directions.</li>
+            <li>Defined the research problem, constructs, and expected relationships.</li>
+            <li>Designed a research approach (methods, sampling logic, measures).</li>
+            <li>Structured a clear proposal and rationale grounded in academic sources.</li>
           </ul>
 
           <div class="chips">
             <span class="chip">Research design</span>
             <span class="chip">Consumer insights</span>
-            <span class="chip">Mixed methods</span>
+            <span class="chip">Qual/Quant logic</span>
             <span class="chip">Academic writing</span>
           </div>
         </article>
 
+        <!-- PROJECT 3 (WITH PHOTO) -->
         <article class="card project">
+          <div class="project-media">
+            <span class="badge">Open Day · Presentation</span>
+            <img src="open-day.jpg" alt="Open Day presentation photo"/>
+          </div>
+
           <div class="accent-band"></div>
           <h3>Open Day · Event & Communication</h3>
           <div class="meta">University initiative · Planning + audience engagement</div>
@@ -487,11 +546,17 @@
           <div class="chips">
             <span class="chip">Event planning</span>
             <span class="chip">Communication</span>
-            <span class="chip">Stakeholders</span>
+            <span class="chip">Public speaking</span>
           </div>
         </article>
 
+        <!-- PROJECT 4 (WITH PHOTO) -->
         <article class="card project">
+          <div class="project-media">
+            <span class="badge">Interview · Book</span>
+            <img src="book.jpg" alt="Book/interview project photo"/>
+          </div>
+
           <div class="accent-band"></div>
           <h3>Academic Interview · Book discussion</h3>
           <div class="meta">Interview project · Content + synthesis</div>
@@ -510,6 +575,7 @@
             <span class="chip">Storytelling</span>
           </div>
         </article>
+
       </div>
     </section>
 
