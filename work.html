@@ -8,13 +8,10 @@
 
   <style>
     :root{
-      /* Same cozy palette + tokens as index.html */
       --bg: #fbfaf7;
       --surface: rgba(255,255,255,0.82);
-      --surface-2: rgba(255,255,255,0.70);
       --ink: #1f2937;
       --muted: #5b6472;
-      --line: rgba(31,41,55,0.12);
 
       --lavender: #b9a7ff;
       --mint: #9fe7d7;
@@ -28,8 +25,6 @@
     }
 
     *{ box-sizing: border-box; }
-    html, body { height: 100%; scroll-behavior: smooth; }
-
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -42,298 +37,123 @@
       line-height: 1.6;
     }
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
-
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
       padding: 18px 18px 70px;
     }
 
-    /* NAV (same as index) */
-    .nav{
-      position: sticky;
-      top: 14px;
-      z-index: 50;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 14px;
+    a{ text-decoration: none; color: inherit; }
+    a:hover{ text-decoration: underline; }
 
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(31,41,55,0.10);
-      backdrop-filter: blur(10px);
-      border-radius: 999px;
+    .nav{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
       padding: 10px 14px;
-      box-shadow: 0 10px 22px rgba(17,24,39,0.07);
+      background: rgba(255,255,255,0.75);
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,0.10);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 18px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:8px;
       font-weight: 760;
-      letter-spacing: -0.2px;
-      white-space: nowrap;
     }
 
     .dot{
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--lavender), var(--mint));
-      box-shadow: 0 0 0 4px rgba(185,167,255,0.16);
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: linear-gradient(135deg,var(--lavender),var(--mint));
     }
 
     .navlinks{
       display:flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px;
-      font-size: 14px;
+      gap:12px;
+      font-size:14px;
       color: var(--muted);
-    }
-
-    .navlinks a{
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
-
-    .navlinks a:hover{
-      border-color: rgba(31,41,55,0.12);
-      background: rgba(255,255,255,0.65);
-      text-decoration: none;
-      color: var(--ink);
-    }
-
-    /* HERO CARD (light, consistent with palette) */
-    .hero{
-      margin-top: 18px;
-      border-radius: calc(var(--radius) + 6px);
-      overflow: hidden;
-      border: 1px solid rgba(31,41,55,0.10);
-      box-shadow: var(--shadow);
-      background: rgba(255,255,255,0.74);
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset: 0;
-      background:
-        radial-gradient(700px 320px at 18% 26%, rgba(185,167,255,0.20), transparent 60%),
-        radial-gradient(560px 260px at 82% 22%, rgba(159,231,215,0.18), transparent 60%),
-        radial-gradient(520px 240px at 52% 96%, rgba(169,216,255,0.18), transparent 55%);
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      position: relative;
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 22px;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size: 13px;
-      color: rgba(31,41,55,0.84);
-      background: rgba(255,255,255,0.60);
-      border: 1px solid rgba(31,41,55,0.10);
-      padding: 7px 12px;
-      border-radius: 999px;
-      width: fit-content;
-      backdrop-filter: blur(8px);
     }
 
     h1{
-      margin: 4px 0 2px;
-      font-size: clamp(26px, 3.8vw, 40px);
-      line-height: 1.12;
-      letter-spacing: -0.7px;
+      font-size:32px;
+      margin-bottom:6px;
     }
 
     .subtitle{
-      margin: 0;
-      max-width: 78ch;
       color: var(--muted);
-      font-size: 15px;
+      margin-bottom:16px;
     }
 
-    .cta{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(31,41,55,0.12);
-      background: rgba(255,255,255,0.60);
-      color: rgba(31,41,55,0.92);
-      font-weight: 760;
-      font-size: 14px;
-      backdrop-filter: blur(8px);
-      cursor: pointer;
-    }
-
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(185,167,255,0.98), rgba(159,231,215,0.98));
-      color: #0b1220;
-    }
-
-    .btn:hover{ text-decoration:none; filter: brightness(1.03); }
-
-    /* SECTIONS */
-    section{ margin-top: 26px; }
-
-    .section-title{
-      display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 12px;
-      padding: 0 4px;
-    }
-
-    h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -0.2px;
-    }
-
-    .hint{
-      font-size: 13px;
-      color: var(--muted);
-    }
+    section{ margin-top:30px; }
 
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(12,1fr);
+      gap:16px;
     }
 
     .card{
-      border: 1px solid rgba(31,41,55,0.10);
-      border-radius: var(--radius);
+      grid-column: span 6;
       background: var(--surface);
+      border-radius: var(--radius);
+      padding:16px;
       box-shadow: var(--shadow-soft);
-      padding: 16px;
-      overflow: hidden;
-    }
-
-    .card:hover{ background: rgba(255,255,255,0.90); }
-
-    .accent-band{
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(90deg,
-        rgba(185,167,255,0.65),
-        rgba(159,231,215,0.55),
-        rgba(255,212,184,0.55),
-        rgba(169,216,255,0.55)
-      );
-      margin-bottom: 10px;
       border: 1px solid rgba(31,41,55,0.08);
     }
 
-    /* Work cards */
-    .work{ grid-column: span 6; }
-
-    .work h3{
-      margin: 0 0 6px;
-      font-size: 16px;
-      letter-spacing: -0.2px;
+    .accent-band{
+      height:8px;
+      border-radius:999px;
+      margin-bottom:10px;
+      background: linear-gradient(90deg,var(--lavender),var(--mint),var(--peach),var(--sky));
     }
+
+    h3{ margin:0 0 6px; }
 
     .meta{
-      font-size: 12px;
+      font-size:12px;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom:8px;
     }
 
-    .p{ margin: 0; color: var(--muted); }
-    .p strong{ color: var(--ink); }
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
 
-    .chips{ margin-top: 10px; display:flex; gap:8px; flex-wrap: wrap; }
     .chip{
-      font-size: 12px;
-      color: rgba(31,41,55,0.78);
-      border: 1px solid rgba(31,41,55,0.12);
+      font-size:12px;
+      padding:5px 9px;
+      border-radius:999px;
       background: rgba(255,255,255,0.60);
-      padding: 6px 10px;
-      border-radius: 999px;
+      border:1px solid rgba(31,41,55,0.12);
     }
 
     .links{
-      margin-top: 12px;
+      margin-top:12px;
       display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
     .linkbtn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(31,41,55,0.10);
-      background: rgba(255,255,255,0.55);
-      font-weight: 760;
-      font-size: 13px;
-      color: rgba(31,41,55,0.92);
-    }
-    .linkbtn:hover{ text-decoration:none; background: rgba(255,255,255,0.78); }
-
-    /* Optional: small media preview box */
-    .media{
-      margin-top: 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(31,41,55,0.10);
-      overflow: hidden;
-      height: 170px;
-      background:
-        radial-gradient(600px 220px at 20% 20%, rgba(185,167,255,0.28), transparent 60%),
-        radial-gradient(520px 220px at 80% 10%, rgba(159,231,215,0.20), transparent 60%),
-        radial-gradient(520px 220px at 60% 90%, rgba(255,212,184,0.16), transparent 60%),
-        rgba(255,255,255,0.55);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: rgba(31,41,55,0.72);
-      font-weight: 760;
-      font-size: 13px;
-      text-align: center;
-      padding: 12px;
+      padding:7px 10px;
+      border-radius:10px;
+      background: rgba(255,255,255,0.70);
+      border:1px solid rgba(31,41,55,0.10);
+      font-size:13px;
+      font-weight:600;
     }
 
-    footer{
-      margin-top: 34px;
-      padding: 18px 10px 0;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid rgba(31,41,55,0.10);
-    }
-
-    @media (max-width: 860px){
-      .work{ grid-column: span 12; }
-      .nav{ border-radius: 18px; }
-      .media{ height: 190px; }
+    @media (max-width:860px){
+      .card{ grid-column: span 12; }
     }
   </style>
 </head>
@@ -348,46 +168,26 @@
       </div>
       <div class="navlinks">
         <a href="index.html">Home</a>
-        <a href="#work">Explore</a>
         <a href="index.html#projects">Projects</a>
         <a href="index.html#contact">Contact</a>
       </div>
     </div>
 
-    <header class="hero" id="top">
-      <div class="hero-inner">
-        <span class="kicker">Collaborations · Community · Copywriting · Media</span>
-        <h1>Explore my work</h1>
-        <p class="subtitle">
-          A curated selection of collaborations and community-facing projects.
-          Each card includes what I did and direct links to see it live.
-        </p>
+    <h1>Explore My Work</h1>
+    <p class="subtitle">
+      Selected collaborations and community-facing initiatives where communication, engagement and leadership intersect.
+    </p>
 
-        <div class="cta">
-          <a class="btn primary" href="ALE_cv.pdf" download="Alessandra_Beretta_CV.pdf">Download CV</a>
-          <a class="btn" href="index.html#contact">Contact</a>
-          <a class="btn" href="#work">Jump to cards</a>
-        </div>
-      </div>
-    </header>
-
-    <section id="work">
-      <div class="section-title">
-        <h2>Collaborations & Community Projects</h2>
-        <div class="hint">Role → contribution → evidence</div>
-      </div>
-
+    <section>
       <div class="grid">
 
         <!-- FESTIVAL BUONE NOTIZIE -->
-        <article class="card work" id="festival-buone-notizie">
+        <div class="card">
           <div class="accent-band"></div>
           <h3>Festival Buone Notizie</h3>
-          <div class="meta">Role: Ambassador · Video participation / public communication</div>
-
-          <p class="p">
-            <strong>What I did:</strong> contributed to event communication and participated in selected video formats.
-            Below are direct links to the videos where I appear (recommended) and the festival page.
+          <div class="meta">Ambassador · Video participation · Public communication</div>
+          <p>
+            Contributed as ambassador and appeared in selected video content supporting event communication.
           </p>
 
           <div class="chips">
@@ -397,26 +197,18 @@
           </div>
 
           <div class="links">
-            <!-- Replace the placeholders with your real links -->
-            <a class="linkbtn" href="PUT_VIDEO_LINK_1_HERE" target="_blank" rel="noopener">Video 1</a>
-            <a class="linkbtn" href="PUT_VIDEO_LINK_2_HERE" target="_blank" rel="noopener">Video 2</a>
-            <a class="linkbtn" href="PUT_FESTIVAL_PAGE_LINK_HERE" target="_blank" rel="noopener">Festival page</a>
+            <a class="linkbtn" href="https://www.instagram.com/reel/DEcyEO8CDYR/?igsh=MTZnbWRldHUzcDA5eQ==" target="_blank">Watch Reel 1</a>
+            <a class="linkbtn" href="https://www.instagram.com/reel/DB3hA4Bse0J/?igsh=dXduMnQzOWVzbzdz" target="_blank">Watch Reel 2</a>
           </div>
-
-          <div class="media">
-            Tip: add a screenshot thumbnail here (optional) by replacing this div with an &lt;img&gt;.
-          </div>
-        </article>
+        </div>
 
         <!-- ORA LOMBARDIA -->
-        <article class="card work" id="ora-lombardia">
+        <div class="card">
           <div class="accent-band"></div>
           <h3>ORA Lombardia</h3>
-          <div class="meta">Role: Copywriting · Social content support</div>
-
-          <p class="p">
-            <strong>What I did:</strong> wrote copy for social posts, adapting tone of voice to audience and message objectives,
-            supporting consistent communication and engagement.
+          <div class="meta">Copywriting · Social communication support</div>
+          <p>
+            Wrote copy for social posts, adapting tone of voice and messaging strategy to align with community objectives.
           </p>
 
           <div class="chips">
@@ -426,25 +218,17 @@
           </div>
 
           <div class="links">
-            <!-- Replace the placeholders with your real links -->
-            <a class="linkbtn" href="PUT_ORA_LOMBARDIA_PAGE_LINK_HERE" target="_blank" rel="noopener">Visit page</a>
-            <a class="linkbtn" href="PUT_EXAMPLE_POST_LINK_HERE" target="_blank" rel="noopener">Example post</a>
+            <a class="linkbtn" href="https://www.instagram.com/ora.lombardia?igsh=MWRuaHpqZHZmNXhsbw==" target="_blank">Visit Page</a>
           </div>
+        </div>
 
-          <div class="media">
-            Tip: you can place a screenshot of a post you wrote (blur names if needed).
-          </div>
-        </article>
-
-        <!-- DELEGAZIONE LOMBARDIA -->
-        <article class="card work" id="scu-lombardy-delegation">
+        <!-- SCU LOMBARDIA -->
+        <div class="card">
           <div class="accent-band"></div>
-          <h3>SCU Lombardy Delegation</h3>
-          <div class="meta">Role: Regional Representative · Coordination & communication</div>
-
-          <p class="p">
-            <strong>What I did:</strong> supported coordination and communication activities, helping community participation
-            and collaboration across stakeholders and initiatives.
+          <h3>SCU Lombardia – Regional Delegation</h3>
+          <div class="meta">Regional Representative · Communication & coordination</div>
+          <p>
+            Managed and contributed to digital communication for the regional delegation, supporting coordination and engagement.
           </p>
 
           <div class="chips">
@@ -454,48 +238,12 @@
           </div>
 
           <div class="links">
-            <!-- Replace the placeholder with your real link -->
-            <a class="linkbtn" href="PUT_DELEGATION_PAGE_LINK_HERE" target="_blank" rel="noopener">Official page</a>
+            <a class="linkbtn" href="https://www.instagram.com/delegazione_scu_lombardia_?igsh=eG1wMTRrb3hrdHNp" target="_blank">Visit Page</a>
           </div>
-
-          <div class="media">
-            Optional: add a photo/screenshot from an initiative (or a simple icon image).
-          </div>
-        </article>
-
-        <!-- OPTIONAL CARD: add more later -->
-        <article class="card work" id="more-coming">
-          <div class="accent-band"></div>
-          <h3>More coming soon</h3>
-          <div class="meta">Continuous portfolio updates</div>
-
-          <p class="p">
-            I regularly add new collaborations, communication projects, and analytics work here.
-            If you want a specific example, feel free to contact me.
-          </p>
-
-          <div class="chips">
-            <span class="chip">Growth mindset</span>
-            <span class="chip">Continuous learning</span>
-            <span class="chip">New projects</span>
-          </div>
-
-          <div class="links">
-            <a class="linkbtn" href="index.html#projects">Back to projects</a>
-            <a class="linkbtn" href="#top">Back to top</a>
-          </div>
-
-          <div class="media">
-            Add your next proof: a dashboard screenshot, a campaign, a talk, or a prototype.
-          </div>
-        </article>
+        </div>
 
       </div>
     </section>
-
-    <footer>
-      <p class="p">Built with HTML/CSS and hosted on GitHub Pages.</p>
-    </footer>
 
   </div>
 </body>
